@@ -36,10 +36,8 @@ type SalienceReceiver interface {
 
 // AcceptIntegerLiteral accept the assigned integer
 func (sal *Salience) AcceptIntegerLiteral(lit *IntegerLiteral) {
-	salienceValue := int(lit.Integer)
-
-	if salienceValue >= math.MinInt32 && salienceValue <= math.MaxInt32 {
-		sal.SalienceValue = salienceValue
+	if lit.Integer >= math.MinInt32 && lit.Integer <= math.MaxInt32 {
+		sal.SalienceValue = int(lit.Integer)
 	} else {
 		panic("Salience value out of range")
 	}
