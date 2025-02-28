@@ -21,7 +21,7 @@ This project is a fork of the original `Grule` project by `hyperjumptech` which 
 
 Like **Drools**, **Grule** has its own *DSL* or Domain-Specific Language.
 
-Below is an example of Drools's DRL or Drools Rule Language:
+Below is an example of Drools' DRL or Drools Rule Language:
 
 ```drool
 rule "SpeedUp"
