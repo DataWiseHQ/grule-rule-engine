@@ -7,15 +7,15 @@ Please read the following guideline when you're translating the documentations.
 
 ## Working with the project
 
-We are following common github contribution practice. 
+We are following common GitHub contribution practice. 
 
-1. Fork the project into your own github repository.
-2. Clone the project from your repostory into your local computer.
+1. Fork the project into your own GitHub repository.
+2. Clone the project from your repository into your local computer.
 3. From your local copy, make an `upstream` remote repository to the original `hyperjump/grule-rule-engine`.
 4. From your local copy, create a new branch for your translation project.
-5. Make a regular `pull` from the upstream (incase other people work on the same language as you do).
+5. Make a regular `pull` from the upstream (in case other people work on the same language as you do).
 6. Build-up your translation and commit-push to your own repository until a single file is done.
-7. Always check your translation result from your repository github (to see how it looks like)
+7. Always check your translation result from your repository GitHub (to see how it looks like)
 8. Make a PR from your repository/branch.
 
 If the above list still unclear for you, you can always visit [First Contributor manual](https://github.com/firstcontributions/first-contributions) 
@@ -36,7 +36,7 @@ grule-rule-engine
             +-- [documentation .md files]
 ```
 
-Currently it may look something like...
+Currently, it may look something like...
 
 ```text
 grule-rule-engine

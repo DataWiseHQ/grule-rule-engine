@@ -1,18 +1,18 @@
 name: Grule-Rule-Engine
-
+permissions:
+  contents: read
 on:
   pull_request:
     branches:
       - master
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           go-version: '1.21'
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Fetching dependencies
         run : go get -v -t -d ./...
       - name: Execute test

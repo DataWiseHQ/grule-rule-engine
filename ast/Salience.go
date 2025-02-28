@@ -14,6 +14,8 @@
 
 package ast
 
+import "math"
+
 // NewSalience create new Salience AST object
 func NewSalience(val int) *Salience {
 
@@ -34,5 +36,11 @@ type SalienceReceiver interface {
 
 // AcceptIntegerLiteral accept the assigned integer
 func (sal *Salience) AcceptIntegerLiteral(lit *IntegerLiteral) {
-	sal.SalienceValue = int(lit.Integer)
+	salienceValue := int(lit.Integer)
+
+	if salienceValue >= math.MinInt32 && salienceValue <= math.MaxInt32 {
+		sal.SalienceValue = salienceValue
+	} else {
+		panic("Salience value out of range")
+	}
 }
