@@ -16,6 +16,7 @@ package ast
 
 import (
 	"github.com/DataWiseHQ/grule-rule-engine/logger"
+	"github.com/rs/zerolog"
 	"github.com/sirupsen/logrus"
 	"go.uber.org/zap"
 )
@@ -78,6 +79,13 @@ func SetLogger(log interface{}) {
 			return
 		}
 		entry = logger.NewLogrus(log)
+	case *zerolog.Logger:
+		log, ok := log.(*zerolog.Logger)
+		if !ok {
+
+			return
+		}
+		entry = logger.NewZeroLog(log)
 	default:
 
 		return

@@ -18,14 +18,15 @@ import (
 	"fmt"
 	"github.com/DataWiseHQ/grule-rule-engine/ast"
 	"github.com/DataWiseHQ/grule-rule-engine/logger"
+	"github.com/rs/zerolog"
 	"github.com/sirupsen/logrus"
 	"go.uber.org/zap"
 	"time"
 
-	"github.com/antlr4-go/antlr/v4"
 	antlr2 "github.com/DataWiseHQ/grule-rule-engine/antlr"
 	parser "github.com/DataWiseHQ/grule-rule-engine/antlr/parser/grulev3"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 var (
@@ -57,6 +58,13 @@ func SetLogger(log interface{}) {
 			return
 		}
 		entry = logger.NewLogrus(log)
+	case *zerolog.Logger:
+		log, ok := log.(*zerolog.Logger)
+		if !ok {
+
+			return
+		}
+		entry = logger.NewZeroLog(log)
 	default:
 
 		return
