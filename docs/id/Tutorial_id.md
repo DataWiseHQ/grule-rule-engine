@@ -25,7 +25,7 @@ __THIS PAGE IS BEING TRANSLATED__
 
 ## Persiapan
 
-Mohon dicatat bahwa Grule menggunakan Go 1.21
+Mohon dicatat bahwa Grule menggunakan Go 1.23
 
 Untuk menggunakan Grule didalam proyek anda, cukup dengan mudah masukannya.
 

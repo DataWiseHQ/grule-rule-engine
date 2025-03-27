@@ -25,7 +25,7 @@ __THIS PAGE IS BEING TRANSLATED__
 
 ## Preparation
 
-Please note that Grule is using Go 1.21.
+Please note that Grule is using Go 1.23.
 
 To import Grule into your project:
 

@@ -16,13 +16,13 @@ package examples
 
 import (
 	"fmt"
-	"github.com/antlr4-go/antlr/v4"
 	antlr2 "github.com/DataWiseHQ/grule-rule-engine/antlr"
 	parser3 "github.com/DataWiseHQ/grule-rule-engine/antlr/parser/grulev3"
 	"github.com/DataWiseHQ/grule-rule-engine/ast"
 	"github.com/DataWiseHQ/grule-rule-engine/builder"
 	"github.com/DataWiseHQ/grule-rule-engine/engine"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/antlr4-go/antlr/v4"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

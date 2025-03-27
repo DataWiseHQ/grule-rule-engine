@@ -16,14 +16,14 @@ package antlr
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"reflect"
 	"testing"
 
-	"github.com/antlr4-go/antlr/v4"
 	parser "github.com/DataWiseHQ/grule-rule-engine/antlr/parser/grulev3"
 	"github.com/DataWiseHQ/grule-rule-engine/ast"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/antlr4-go/antlr/v4"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -105,7 +105,7 @@ type GrandChild struct {
 }
 
 func TestV3Lexer(t *testing.T) {
-	data, err := ioutil.ReadFile("./sample4.grl")
+	data, err := os.ReadFile("./sample4.grl")
 	if err != nil {
 		t.Fatal(err)
 	} else {
@@ -129,7 +129,7 @@ func TestV3Lexer(t *testing.T) {
 
 func TestV3Parser(t *testing.T) {
 	// logrus.SetLevel(logrus.TraceLevel)
-	data, err := ioutil.ReadFile("./sample4.grl")
+	data, err := os.ReadFile("./sample4.grl")
 	if err != nil {
 		t.Fatal(err)
 	} else {

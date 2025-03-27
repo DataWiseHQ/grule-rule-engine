@@ -22,10 +22,10 @@ import (
 	"go.uber.org/zap"
 	"time"
 
-	"github.com/antlr4-go/antlr/v4"
 	antlr2 "github.com/DataWiseHQ/grule-rule-engine/antlr"
 	parser "github.com/DataWiseHQ/grule-rule-engine/antlr/parser/grulev3"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 var (
@@ -182,8 +182,8 @@ func (builder *RuleBuilder) BuildRuleFromResource(name, version string, resource
 
 	if errReporter.HasError() {
 		BuilderLog.Errorf("GRL syntax error. got %s", errReporter.Error())
-		for i, errr := range errReporter.Errors {
-			BuilderLog.Errorf("%d : %s", i, errr.Error())
+		for i, err := range errReporter.Errors {
+			BuilderLog.Errorf("%d : %s", i, err.Error())
 		}
 
 		return errReporter

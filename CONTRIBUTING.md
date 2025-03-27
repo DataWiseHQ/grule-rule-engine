@@ -7,7 +7,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## Fork Process
 
-1. Ensure that you've installed the Golang (minimum 1.21) in your system.
+1. Ensure that you've installed the Golang (minimum 1.23) in your system.
 2. For this project into your own Github account.
 3. Clone the `grule-rule-engine` forked repository on your account.
 4. Enter the cloned directory.

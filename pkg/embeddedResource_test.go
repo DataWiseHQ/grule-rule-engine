@@ -1,6 +1,3 @@
-//go:build go1.16
-// +build go1.16
-
 //  Copyright DataWiseHQ/grule-rule-engine Authors
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");

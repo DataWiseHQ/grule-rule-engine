@@ -21,11 +21,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/antlr4-go/antlr/v4"
 	"github.com/DataWiseHQ/grule-rule-engine/antlr/parser/grulev3"
 	"github.com/DataWiseHQ/grule-rule-engine/ast"
 	"github.com/DataWiseHQ/grule-rule-engine/logger"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 var (
