@@ -3,7 +3,7 @@ module github.com/DataWiseHQ/grule-rule-engine
 go 1.23.7
 
 require (
-	github.com/antlr4-go/antlr/v4 v4.13.0
+	github.com/antlr4-go/antlr/v4 v4.13.1
 	github.com/bmatcuk/doublestar v1.3.4
 	github.com/go-git/go-billy/v5 v5.6.0
 	github.com/go-git/go-git/v5 v5.13.0
