@@ -24,12 +24,12 @@ func TestUpdatingJsonField(t *testing.T) {
 	assert.NoError(t, err)
 
 	rule := `
-	   		rule CheckReturnValue {
-	   			when
-	   				json.testField == 100
-	   			then
-	   				json.returnField = true;
-					Retract("CheckReturnValue");
+	rule CheckReturnValue {
+	   	when
+	   		json.testField == 100
+	   	then
+	   		json.returnField = true;
+			Retract("CheckReturnValue");
 	}`
 
 	// Prepare knowledgebase library and load it with our rule.
