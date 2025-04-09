@@ -200,4 +200,4 @@ Yes. We need contributors to make Grule even better and useful to the Open Sourc
 * Improve function argument handling to be more fluid and intuitive.
 
 If you really want to help us, simply `Fork` the project and apply for Pull Request.
-Please read our [Contribution Manual](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT)
+Please read our [Contribution Manual](/CONTRIBUTING.md) and [Code of Conduct](/CODE_OF_CONDUCT.md)
