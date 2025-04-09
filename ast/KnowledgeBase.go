@@ -15,7 +15,6 @@
 package ast
 
 import (
-	"bytes"
 	"fmt"
 	"github.com/google/uuid"
 	"io"
@@ -193,7 +192,7 @@ func (e *KnowledgeBase) IsIdentical(that *KnowledgeBase) bool {
 
 // GetSnapshot will create this knowledge base signature
 func (e *KnowledgeBase) GetSnapshot() string {
-	var buffer bytes.Buffer
+	var buffer strings.Builder
 	buffer.WriteString(fmt.Sprintf("%s:%s[", e.Name, e.Version))
 	keys := make([]string, 0)
 	for i := range e.RuleEntries {
