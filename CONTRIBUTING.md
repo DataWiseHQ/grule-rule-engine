@@ -12,6 +12,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 3. Clone the `grule-rule-engine` forked repository on your account.
 4. Enter the cloned directory.
 5. Apply new "upstream" to original `DataWiseHQ/grule-rule-engine` git
+    * `git remote add upstream https://github.com/DataWiseHQ/grule-rule-engine.git`
 6. Now you can work on your account
 7. Remember to pull from your upstream often. `git pull upstream master`
 
