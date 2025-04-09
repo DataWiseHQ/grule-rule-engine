@@ -21,24 +21,32 @@ import (
 )
 
 var (
-	offset int64 = 0
-	lastMS int64 = 0
-	mutex  sync.Mutex
+	offset       int64 = 0
+	lastUnixTime int64 = 0
+	mutex        sync.Mutex
 )
+
+func syncNewID() (int64, int64) {
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	// time.Now() is susceptible to wall clock skew. This only becomes a problem if the clock is set to an earlier
+	// time value; in which case we leverage the offset to maintain uniqueness.
+	currUnixTime := time.Now().Unix()
+	if lastUnixTime >= currUnixTime {
+		offset++
+
+		return lastUnixTime, offset
+	}
+	lastUnixTime = currUnixTime
+	offset = 0
+
+	return currUnixTime, offset
+}
 
 // NewID will create a new unique ID string for this runtime.
 // Uniqueness between system or apps is not necessary.
 func NewID() string {
-	mutex.Lock()
-	defer mutex.Unlock()
-	millisUnix := time.Now().Unix()
-	if lastMS == millisUnix {
-		offset++
-
-		return fmt.Sprintf("%d-%d", lastMS, offset)
-	}
-	lastMS = millisUnix
-	offset = 0
-
-	return fmt.Sprintf("%d-%d", lastMS, offset)
+	timePart, offsetPart := syncNewID()
+	return fmt.Sprintf("%d-%d", timePart, offsetPart)
 }
