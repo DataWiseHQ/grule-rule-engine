@@ -14,9 +14,12 @@
 
 package unique
 
-import "testing"
+import (
+	"sync"
+	"testing"
+)
 
-func TestNewId(t *testing.T) {
+func TestNewID(t *testing.T) {
 	checkMap := make(map[string]int)
 	for i := 0; i < 100000; i++ {
 		id := NewID()
@@ -24,5 +27,35 @@ func TestNewId(t *testing.T) {
 			t.FailNow()
 		}
 		checkMap[id] = 1
+	}
+}
+
+func TestConcurrentNewID(t *testing.T) {
+	const concurrency = 100
+
+	checkMap := make(map[string]bool)
+	idStream := make(chan string, 100)
+	var wg sync.WaitGroup
+
+	wg.Add(concurrency)
+	for goroutineID := 0; goroutineID < concurrency; goroutineID++ {
+		go func(outputStream chan<- string, threadID int) {
+			for i := 0; i < 10000; i++ {
+				outputStream <- NewID()
+			}
+			wg.Done()
+
+			if threadID == 0 {
+				wg.Wait()
+				close(outputStream)
+			}
+		}(idStream, goroutineID)
+	}
+
+	for id := range idStream {
+		if checkMap[id] {
+			t.FailNow()
+		}
+		checkMap[id] = true
 	}
 }
