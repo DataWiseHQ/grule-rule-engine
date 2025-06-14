@@ -27,7 +27,7 @@ import (
 
 	"github.com/DataWiseHQ/grule-rule-engine/logger"
 
-	"github.com/bmatcuk/doublestar"
+	"github.com/bmatcuk/doublestar/v3"
 )
 
 var (
