@@ -15,8 +15,8 @@
 package ast
 
 import (
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/google/uuid"
 	"strings"
 )
 
@@ -24,7 +24,7 @@ import (
 func NewThenExpressionList() *ThenExpressionList {
 
 	return &ThenExpressionList{
-		AstID:           unique.NewID(),
+		AstID:           uuid.NewString(),
 		ThenExpressions: make([]*ThenExpression, 0),
 	}
 }
@@ -75,7 +75,7 @@ func (e *ThenExpressionList) AcceptThenExpression(expr *ThenExpression) error {
 // Clone will clone this ThenExpressionList. The new clone will have an identical structure
 func (e *ThenExpressionList) Clone(cloneTable *pkg.CloneTable) *ThenExpressionList {
 	clone := &ThenExpressionList{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 	}
 

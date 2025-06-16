@@ -18,7 +18,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
+	"github.com/google/uuid"
 	"math"
 	"reflect"
 	"strings"
@@ -30,7 +30,7 @@ import (
 func NewConstant() *Constant {
 
 	return &Constant{
-		AstID: unique.NewID(),
+		AstID: uuid.NewString(),
 	}
 }
 
@@ -90,7 +90,7 @@ func (e *Constant) MakeCatalog(cat *Catalog) {
 // Clone will clone this Constant. The new clone will have an identical structure
 func (e *Constant) Clone(cloneTable *pkg.CloneTable) *Constant {
 	clone := &Constant{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 		Value:   e.Value,
 	}

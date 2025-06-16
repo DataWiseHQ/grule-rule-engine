@@ -17,7 +17,7 @@ package ast
 import (
 	"context"
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 
@@ -28,7 +28,7 @@ import (
 func NewRuleEntry() *RuleEntry {
 
 	return &RuleEntry{
-		AstID:           unique.NewID(),
+		AstID:           uuid.NewString(),
 		RuleName:        "No Name",
 		Salience:        0,
 		RuleDescription: "No Description",
@@ -103,7 +103,7 @@ func (e *RuleEntry) AcceptThenScope(thenScope *ThenScope) error {
 // Clone will clone this RuleEntry. The new clone will have an identical structure
 func (e *RuleEntry) Clone(cloneTable *pkg.CloneTable) *RuleEntry {
 	clone := &RuleEntry{
-		AstID:           unique.NewID(),
+		AstID:           uuid.NewString(),
 		GrlText:         e.GrlText,
 		RuleName:        e.RuleName,
 		RuleDescription: e.RuleDescription,

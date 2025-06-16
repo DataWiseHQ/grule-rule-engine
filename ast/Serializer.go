@@ -18,7 +18,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
+	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 	"io"
 	"math"
@@ -110,7 +110,7 @@ func (cat *Catalog) BuildKnowledgeBase() (*KnowledgeBase, error) {
 		variableSnapshotMap:       make(map[string]*Variable),
 		expressionVariableMap:     make(map[*Variable][]*Expression),
 		expressionAtomVariableMap: make(map[*Variable][]*ExpressionAtom),
-		ID:                        unique.NewID(),
+		ID:                        uuid.NewString(),
 	}
 	knowledgeBase := &KnowledgeBase{
 		Name:          cat.KnowledgeBaseName,

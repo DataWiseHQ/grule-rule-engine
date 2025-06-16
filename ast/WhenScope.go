@@ -16,7 +16,7 @@ package ast
 
 import (
 	"errors"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 
@@ -27,7 +27,7 @@ import (
 func NewWhenScope() *WhenScope {
 
 	return &WhenScope{
-		AstID: unique.NewID(),
+		AstID: uuid.NewString(),
 	}
 }
 
@@ -64,7 +64,7 @@ type WhenScopeReceiver interface {
 // Clone will clone this Clone. The new clone will have an identical structure
 func (e *WhenScope) Clone(cloneTable *pkg.CloneTable) *WhenScope {
 	clone := &WhenScope{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 	}
 
