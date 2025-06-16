@@ -16,8 +16,8 @@ package ast
 
 import (
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
 	"github.com/DataWiseHQ/grule-rule-engine/model"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 
@@ -28,7 +28,7 @@ import (
 func NewVariable() *Variable {
 
 	return &Variable{
-		AstID: unique.NewID(),
+		AstID: uuid.NewString(),
 	}
 }
 
@@ -70,7 +70,7 @@ func (e *Variable) MakeCatalog(cat *Catalog) {
 // Clone will clone this Variable. The new clone will have an identical structure
 func (e *Variable) Clone(cloneTable *pkg.CloneTable) *Variable {
 	clone := &Variable{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 		Name:    e.Name,
 	}

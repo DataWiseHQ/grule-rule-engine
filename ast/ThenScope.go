@@ -15,8 +15,8 @@
 package ast
 
 import (
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/google/uuid"
 	"strings"
 )
 
@@ -24,7 +24,7 @@ import (
 func NewThenScope() *ThenScope {
 
 	return &ThenScope{
-		AstID: unique.NewID(),
+		AstID: uuid.NewString(),
 	}
 }
 
@@ -61,7 +61,7 @@ type ThenScopeReceiver interface {
 // Clone will clone this ThenScope. The new clone will have an identical structure
 func (e *ThenScope) Clone(cloneTable *pkg.CloneTable) *ThenScope {
 	clone := &ThenScope{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 	}
 

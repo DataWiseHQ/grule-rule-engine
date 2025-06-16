@@ -15,7 +15,7 @@
 package ast
 
 import (
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 
@@ -25,7 +25,7 @@ import (
 // NewArgumentList create a new instance of ArgumentList
 func NewArgumentList() *ArgumentList {
 	return &ArgumentList{
-		AstID:     unique.NewID(),
+		AstID:     uuid.NewString(),
 		Arguments: make([]*Expression, 0),
 	}
 }
@@ -62,7 +62,7 @@ func (e *ArgumentList) MakeCatalog(cat *Catalog) {
 // Clone will clone this ArgumentList. The new clone will have an identical structure
 func (e *ArgumentList) Clone(cloneTable *pkg.CloneTable) *ArgumentList {
 	clone := &ArgumentList{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 	}
 	if e.Arguments != nil {

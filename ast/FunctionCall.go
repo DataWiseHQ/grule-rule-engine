@@ -16,8 +16,8 @@ package ast
 
 import (
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 )
@@ -26,7 +26,7 @@ import (
 func NewFunctionCall() *FunctionCall {
 
 	return &FunctionCall{
-		AstID:        unique.NewID(),
+		AstID:        uuid.NewString(),
 		ArgumentList: NewArgumentList(),
 	}
 }
@@ -62,7 +62,7 @@ func (e *FunctionCall) MakeCatalog(cat *Catalog) {
 // Clone will clone this FunctionCall. The new clone will have an identical structure
 func (e *FunctionCall) Clone(cloneTable *pkg.CloneTable) *FunctionCall {
 	clone := &FunctionCall{
-		AstID:        unique.NewID(),
+		AstID:        uuid.NewString(),
 		GrlText:      e.GrlText,
 		FunctionName: e.FunctionName,
 	}
