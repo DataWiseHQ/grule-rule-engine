@@ -17,8 +17,8 @@ package ast
 import (
 	"errors"
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
 	"github.com/DataWiseHQ/grule-rule-engine/model"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 
@@ -29,7 +29,7 @@ import (
 func NewExpressionAtom() *ExpressionAtom {
 
 	return &ExpressionAtom{
-		AstID: unique.NewID(),
+		AstID: uuid.NewString(),
 	}
 }
 
@@ -95,7 +95,7 @@ type ExpressionAtomReceiver interface {
 // Clone will clone this ExpressionAtom. The new clone will have an identical structure
 func (e *ExpressionAtom) Clone(cloneTable *pkg.CloneTable) *ExpressionAtom {
 	clone := &ExpressionAtom{
-		AstID:        unique.NewID(),
+		AstID:        uuid.NewString(),
 		GrlText:      e.GrlText,
 		VariableName: e.VariableName,
 		Negated:      e.Negated,

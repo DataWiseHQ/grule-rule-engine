@@ -17,7 +17,7 @@ package ast
 import (
 	"errors"
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 
@@ -61,7 +61,7 @@ const (
 func NewExpression() *Expression {
 
 	return &Expression{
-		AstID:    unique.NewID(),
+		AstID:    uuid.NewString(),
 		Operator: 0,
 	}
 }
@@ -116,7 +116,7 @@ func (e *Expression) MakeCatalog(cat *Catalog) {
 // Clone will clone this Expression. The new clone will have an identical structure
 func (e *Expression) Clone(cloneTable *pkg.CloneTable) *Expression {
 	clone := &Expression{
-		AstID:    unique.NewID(),
+		AstID:    uuid.NewString(),
 		GrlText:  e.GrlText,
 		Operator: e.Operator,
 		Negated:  e.Negated,

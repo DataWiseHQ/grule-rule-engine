@@ -16,8 +16,8 @@ package ast
 
 import (
 	"fmt"
-	"github.com/DataWiseHQ/grule-rule-engine/ast/unique"
 	"github.com/DataWiseHQ/grule-rule-engine/pkg"
+	"github.com/google/uuid"
 	"reflect"
 	"strings"
 )
@@ -26,7 +26,7 @@ import (
 func NewArrayMapSelector() *ArrayMapSelector {
 
 	return &ArrayMapSelector{
-		AstID: unique.NewID(),
+		AstID: uuid.NewString(),
 	}
 }
 
@@ -65,7 +65,7 @@ type ArrayMapSelectorReceiver interface {
 // Clone will clone this ArgumentList. The new clone will have an identical structure
 func (e *ArrayMapSelector) Clone(cloneTable *pkg.CloneTable) *ArrayMapSelector {
 	clone := &ArrayMapSelector{
-		AstID:   unique.NewID(),
+		AstID:   uuid.NewString(),
 		GrlText: e.GrlText,
 	}
 	if e.Expression != nil {
