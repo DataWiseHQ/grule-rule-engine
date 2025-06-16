@@ -21,7 +21,7 @@ import (
 	"strings"
 
 	"github.com/DataWiseHQ/grule-rule-engine/logger"
-	"github.com/bmatcuk/doublestar"
+	"github.com/bmatcuk/doublestar/v3"
 )
 
 // EmbeddedResource is a struct that will load an embedded file from an embed.FS struct.
@@ -135,25 +135,25 @@ func (bundle *EmbeddedResourceBundle) loadPath(path string) ([]Resource, error) 
 	for _, finfo := range finfos {
 		fulPath := filepath.Join(path, finfo.Name())
 		if finfo.IsDir() {
-			gres, err := bundle.loadPath(fulPath)
-			if err != nil {
+			gres, loadPathErr := bundle.loadPath(fulPath)
+			if loadPathErr != nil {
 
-				return nil, err
+				return nil, loadPathErr
 			}
 			ret = append(ret, gres...)
 		} else {
 			for _, pattern := range bundle.PathPattern {
-				matched, err := doublestar.PathMatch(pattern, "/"+fulPath)
-				if err != nil {
+				matched, pathMatchErr := doublestar.PathMatch(pattern, "/"+fulPath)
+				if pathMatchErr != nil {
 
-					return nil, err
+					return nil, pathMatchErr
 				}
 				if matched {
 					logger.Log.Debugf("Loading embedded file %s", fulPath)
 					gress := NewEmbeddedResource(bundle.Source, fulPath)
-					_, err := gress.Load()
-					if err != nil {
-						return nil, err
+					_, loadErr := gress.Load()
+					if loadErr != nil {
+						return nil, loadErr
 					}
 					ret = append(ret, gress)
 

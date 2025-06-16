@@ -22,16 +22,16 @@ func init() {
 		panic(err.Error())
 	}
 	defer func(f *os.File) {
-		err := f.Close()
-		if err != nil {
-			panic(err.Error())
+		closeErr := f.Close()
+		if closeErr != nil {
+			panic(closeErr.Error())
 		}
 	}(f)
 	buf := bufio.NewReader(f)
 	words = make([]string, 0)
 	for {
-		str, err := buf.ReadString('\n')
-		if err != nil {
+		str, readStringErr := buf.ReadString('\n')
+		if readStringErr != nil {
 			break
 		}
 		words = append(words, strings.TrimSpace(str))
@@ -111,15 +111,15 @@ func GenRandomRule(fileName string, count int) error {
 		return err
 	}
 	defer func(f *os.File) {
-		err := f.Close()
-		if err != nil {
-			panic(err.Error())
+		closeErr := f.Close()
+		if closeErr != nil {
+			panic(closeErr.Error())
 		}
 	}(f)
 	for i := 1; i <= count; i++ {
-		_, err := f.WriteString(MakeRule(i))
-		if err != nil {
-			return err
+		_, writeStringErr := f.WriteString(MakeRule(i))
+		if writeStringErr != nil {
+			return writeStringErr
 		}
 	}
 	return nil
